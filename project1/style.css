@@ -1,0 +1,32 @@
+html {
+    margin: 0;
+  }
+.link{
+  text-align: center;
+}
+  .canvas {
+    margin: 100px auto 100px;
+    width: 80%;
+    text-align: center;
+  }
+  .button {
+    width: 100px;
+    height: 100px;
+    border: solid black 4px;
+    display: inline-block;
+  }
+  
+  #black {
+    background: black;
+  }
+  
+  #white {
+    background: white;
+  }
+  #pink {
+    background: pink;
+  }
+  #yellow {
+    background: yellow;
+  }
+  
