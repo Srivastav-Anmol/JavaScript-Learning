@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+    <style>
+        body {
+            background-color: #414141;
+            color: aliceblue;
+        }
+        img {
+            transition: transform 0.2s;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        a {
+            color: rgb(225, 228, 22);
+        }
+    </style>
+</head>
+<body>
+    <h2>Amazing Images</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="Photoshop image"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="Beautiful scenery in Japan"></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="River flowing through mountains"></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="An owl perched on a branch"></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="People praying together"></li>
+            <li><a href="https://google.com" id="google">Visit Google</a></li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    /* document.getElementById('owl').onclick=function(){
+        alert('Owl Image clicked')
+    } */  // this is not a good practice of using events
+
+    /* document.getElementById('owl').addEventListener('click',function(){
+        alert('OWL CLICKED')
+    }) */
+
+
+    //event object for various events functions and methods + event bubbling
+    /* document.getElementById('owl').addEventListener('click', function(event) { 
+        console.log('OWL Clicked'); // All events are synchronous but there are few events which are not synchronous
+        event.stopPropagation() //it stops bubbling event
+    },false); //false is default which is known for event bubbling
+
+//false==event bubbling--it executes from bottom to top tags or you can say child tag to parent tag.
+//true==event capturing--it executes from top to bottom i.e from parent to child tag.
+
+    document.getElementById('images').addEventListener('click',function(event){
+        console.log('Images clicked');   
+    },false)
+
+    document.getElementById('google').addEventListener('click',function(event){
+        event.preventDefault() //stopping from loading anchor tag
+        event.stopPropagation()
+        console.log('Google clicked');
+        
+    })
+ */
+
+    document.querySelector('#images').addEventListener('click',function(event){
+        /* console.log(event.target.parentNode);
+        let rem=event.target.parentNode
+        //rem.remove()
+        //but if we click on child then it will delete it whole parent, irrespective if we click on single child
+        rem.parentNode.removeChild(rem) */
+        
+        console.log(event.target.tagName); //getting tag name which we are deleting if by mistake click any then if will care of it
+        if (event.target.tagName==='IMG') {
+            let rem=event.target.parentNode
+            rem.remove()
+        }        
+    },false)
+</script>
+</html>
+
+<!-- parent me true h to capturing, false h to bubbling -->

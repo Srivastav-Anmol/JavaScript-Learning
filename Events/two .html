@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+</body>
+<script>
+
+  /*   setTimeout(function(){
+        console.log("Anmol");
+        
+    },2000) */ 
+    //settimeout take handler function which means name of the function is passed
+/*     const change=function(){
+        document.querySelector('h1').innerHTML='JavaScript Learning'
+    }
+    const setting=setTimeout(sayName,1000)
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(setting)
+        console.log('stop'); 
+    }) */
+    const sayName = function() {
+    console.log("World", Date.now());
+};
+
+let intervalId = null;
+document.querySelector('#start').addEventListener('click', function() {
+    if (intervalId === null) {
+        intervalId = setInterval(sayName, 1000);
+    }
+});
+document.querySelector('#stop').addEventListener('click', function() {
+    clearInterval(intervalId);
+    intervalId = null;
+});
+
+</script>
+</html>

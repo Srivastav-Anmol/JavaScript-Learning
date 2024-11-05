@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Closure</title>
+</head>
+<body>
+    <button id="green">Green</button>
+    <button id="orange">Orange</button>
+</body>
+<script>
+    /* document.getElementById('orange').onclick=function(){
+        document.body.style.background=`orange`
+    }
+    document.getElementById('green').onclick=function(){
+        document.body.style.background=`green`
+    } */
+   // what if we have mutiple colors then writing the above code will create redundancy so we should use closure here
+
+   function clickHandler(color){
+    return function (){
+        document.body.style.background=`${color}`
+    }
+   }
+
+   let arr=['orange','green']
+   for (let index = 0; index < arr.length; index++) {
+      let element = arr[index];
+      document.getElementById(element).onclick=clickHandler(element)
+   }
+</script>
+</html>
